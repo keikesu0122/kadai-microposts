@@ -79,9 +79,9 @@ class User extends Authenticatable
     
     public function feed_microposts()
     {
-        $folow_user_id=$this->followings()->pluck('users.id')->toArray();
+        $follow_user_ids=$this->followings()->pluck('users.id')->toArray();
         $follow_user_ids[]=$this->id;
-        return Micropost::whereIn('user_id', $follow_user_id);
+        return Micropost::whereIn('user_id', $follow_user_ids);
     }
     
 }
